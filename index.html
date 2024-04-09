@@ -8,7 +8,7 @@
 </head>
 <body>
   <h1>PeerJS Example</h1>
-  
+  <p id="peerid">ID:</p>
   <textarea id="messageInput" placeholder="Type your message here"></textarea>
   <button onclick="sendMessage()">Send</button>
   <div id="messageDisplay"></div>
@@ -23,6 +23,7 @@
     // Event handler for when connection is established
     peer.on('open', function(id) {
       console.log('My peer ID is: ' + id);
+      document.getElementById("peerid").innerText = "ID: " + id;
     });
 
     // Event handler for incoming connections
