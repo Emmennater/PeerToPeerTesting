@@ -47,10 +47,17 @@
       // Establish connection to the peer
       const connection = peer.connect(peerId);
 
-      // Send message through the established connection
+      // Wait for the connection to open
       connection.on('open', function() {
+        // Now the connection is open, send the message
         connection.send(message);
         displayMessage('You said: ' + message);
+      });
+
+      // Handle errors
+      connection.on('error', function(err) {
+        console.error(err);
+        alert('An error occurred while trying to connect to the peer.');
       });
     }
 
