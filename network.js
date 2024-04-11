@@ -5,7 +5,8 @@ class Network {
         this.peer = new Peer();
         this.peer.on('open', id => {
             this.id = id;
-            document.getElementById("peerid").innerHTML = "YOUR ID: " + id;
+            document.getElementById("peerid").innerHTML = id;
+            document.getElementById("copyicon").style.visibility = "visible";
         });
         this.peer.on('connection', conn => {
             appendMessage("Message received: " + conn.peer);

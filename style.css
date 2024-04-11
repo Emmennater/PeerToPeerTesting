@@ -1,15 +1,41 @@
-html {
+html, body {
     color: lime;
     background-color: black;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 textarea {
+    display: block;
+    width: calc(100% - 4px);
+    max-width: 400px;
+    margin-bottom: 4px;
     background-color: black;
     color: white;
+    font-size: 16px;
 }
 
 button {
     background-color: black;
     color: lime;
+    font-size: 16px;
+}
+
+h1 {
+    margin: 0px;
+}
+
+#pid {
+    display: inline-flex;
+}
+
+#peerid {
+    display: inline-flex;
+    text-decoration: underline;
+}
+
+#copyid {
+    display: inline-flex;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
 }
