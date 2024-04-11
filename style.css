@@ -1,0 +1,15 @@
+html {
+    color: lime;
+    background-color: black;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+textarea {
+    background-color: black;
+    color: white;
+}
+
+button {
+    background-color: black;
+    color: lime;
+}

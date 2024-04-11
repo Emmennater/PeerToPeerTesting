@@ -1,71 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PeerJS Example</title>
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.2"></script>
+  <link rel="stylesheet" href="style.css">
+
+  
+
 </head>
+
 <body>
-  <h1>PeerJS Example</h1>
-  <p id="peerid">ID:</p>
+  <h1>Peer Server Cloud Network</h1>
+  <p id="peerid">&nbsp;</p>
   <textarea id="messageInput" placeholder="Type your message here"></textarea>
-  <button onclick="sendMessage()">Send</button>
+  <button id="send">Send</button>
   <div id="messageDisplay"></div>
 
-  <script>
-    // Generate a unique ID for the current user
-    const userId = Math.random().toString(36).substring(2);
+  <script src="network.js"></script>
+  <script src="main.js"></script>
 
-    // Initialize Peer object without specifying host and port
-    const peer = new Peer(userId);
-
-    // Event handler for when connection is established
-    peer.on('open', function(id) {
-      console.log('My peer ID is: ' + id);
-      document.getElementById("peerid").innerText = "ID: " + id;
-    });
-
-    // Event handler for incoming connections
-    peer.on('connection', function(connection) {
-      console.log('Incoming connection from: ' + connection.peer);
-
-      // Event handler for incoming data
-      connection.on('data', function(data) {
-        displayMessage('Peer ' + connection.peer + ' says: ' + data);
-      });
-    });
-
-    // Function to send message to the connected peer
-    function sendMessage() {
-      const messageInput = document.getElementById('messageInput');
-      const message = messageInput.value;
-
-      // Get the ID of the peer to send message to
-      const peerId = prompt("Enter the ID of the peer you want to send the message to:");
-
-      // Establish connection to the peer
-      const connection = peer.connect(peerId);
-
-      // Wait for the connection to open
-      connection.on('open', function() {
-        // Now the connection is open, send the message
-        connection.send(message);
-        displayMessage('You said: ' + message);
-      });
-
-      // Handle errors
-      connection.on('error', function(err) {
-        console.error(err);
-        alert('An error occurred while trying to connect to the peer.');
-      });
-    }
-
-    // Function to display messages on the webpage
-    function displayMessage(message) {
-      const messageDisplay = document.getElementById('messageDisplay');
-      messageDisplay.innerHTML += '<p>' + message + '</p>';
-    }
-  </script>
 </body>
+
 </html>
