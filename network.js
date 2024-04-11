@@ -10,6 +10,7 @@ class Network {
         });
         this.peer.on('connection', conn => {
             appendMessage("Message received: " + conn.peer);
+            conn.close();
         });
     }
 
@@ -29,7 +30,11 @@ class Network {
                 console.error(err);
                 alert('An error occurred while trying to connect to the peer.');
             });
-        })
+        });
+
+        setTimeout(() => {
+            peer.disconnect();
+        }, 1000);
     }
 }
 
