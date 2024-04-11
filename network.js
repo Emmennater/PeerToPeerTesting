@@ -14,9 +14,13 @@ class Network {
     }
 
     send(id, msg) {
+        // Clean message
+        msg = msg.toLowerCase();
+        msg = msg.replace(/[^a-z0-9]/g, ' ');
+
         let peer = new Peer(msg);
         peer.on('open', () => {
-            console.log("OPEN!");
+            // console.log("OPEN!");
             let conn = peer.connect(id);
             conn.on('open', conn => {
                 appendMessage("Message sent!");
